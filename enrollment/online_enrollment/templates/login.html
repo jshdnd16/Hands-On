@@ -1,0 +1,121 @@
+{% load static %}
+
+<style>
+    a {
+        text-decoration: none;
+    }
+    /* Login / Auth styles extracted from stylesko.css and inlined for this template */
+    .auth-container {
+        max-width: 400px;
+        margin: 60px auto;
+        padding: 32px 28px;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(44, 62, 80, 0.13);
+    }
+
+    .auth-form {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .auth-title {
+        font-size: 26px;
+        text-align: center;
+        margin-bottom: 18px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .form-fields p {
+        margin-bottom: 14px;
+    }
+
+    .form-fields label {
+        font-weight: bold;
+        margin-bottom: 6px;
+        display: block;
+    }
+
+    .form-fields input,
+    .form-fields select,
+    .form-fields textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 6px;
+        border: 1px solid #bdc3c7;
+        font-size: 15px;
+        margin-top: 4px;
+        margin-bottom: 8px;
+        transition: border-color 0.2s, background 0.2s;
+        background: #fbfdff;
+        box-sizing: border-box;
+    }
+
+    .form-fields input:focus,
+    .form-fields select:focus,
+    .form-fields textarea:focus {
+        border-color: #3498db;
+        outline: none;
+        background: #fff;
+        box-shadow: 0 4px 12px rgba(52,152,219,0.06);
+    }
+
+    .btn-auth {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 12px 0;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(44, 62, 80, 0.07);
+        transition: background 0.2s, transform 0.08s;
+    }
+
+    .btn-auth:hover {
+        background-color: #2980b9;
+        transform: translateY(-1px);
+    }
+
+    .auth-text {
+        text-align: center;
+        color: #7f8c8d;
+        font-size: 15px;
+        margin-top: 10px;
+    }
+
+    .auth-link {
+        color: #3498db;
+        text-decoration: underline;
+        font-weight: bold;
+        transition: color 0.2s;
+    }
+
+    .auth-link:hover {
+        color: #2980b9;
+    }
+</style>
+
+<title>Login</title>
+
+<div class="auth-container">
+    <form method="POST" class="auth-form">
+        {% csrf_token %}
+        
+        <h2 class="auth-title">Login</h2>
+        
+        <div class="form-fields">
+            {{ form.as_p }}
+        </div>
+
+        <button type="submit" class="btn-auth">Login</button>
+
+        <p class="auth-text">
+            Don't have an account? 
+            <a href="{% url 'register_user' %}" class="auth-link">Register</a>
+        </p>
+    </form>
+</div>

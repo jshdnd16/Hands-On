@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+<title>Education</title>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 class="section-header">STUDENTS EDUCATION</h1>
+</div>
+
+<div class="students-grid">
+    {% for x in education %}
+    <div class="student-card">
+        <div class="card-header">
+            <div class="card-actions">
+                <span class="student-badge">{{ x.student }}</span>
+                <a href="{% url 'edit_education' x.id %}" class="btn btn-primary">Edit</a>
+            </div>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Elementary:</span>
+            <span class="info-value">{{ x.elementary }}</span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">High School:</span>
+            <span class="info-value">{{ x.highschool }}</span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Tertiary:</span>
+            <span class="info-value">{{ x.tertiary }}</span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Year Graduated:</span>
+            <span class="info-value">{{ x.year_graduated }}</span>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
