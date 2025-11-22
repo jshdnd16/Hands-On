@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+<title>Address</title>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 class="section-header">STUDENTS ADDRESS</h1>
+</div>
+
+<div class="students-grid">
+    {% for x in address %}
+    <div class="student-card">
+        <div class="card-header">
+            <div class="card-actions">
+                <span class="student-badge">{{ x.student }}</span>
+                <a href="{% url 'edit_address' x.id %}" class="btn btn-primary">Edit</a>
+            </div>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Street:</span>
+            <span class="info-value">{{ x.street }}</span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Barangay:</span>
+            <span class="info-value">{{ x.barangay }}</span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">City:</span>
+            <span class="info-value">{{ x.city }}</span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Province:</span>
+            <span class="info-value">{{ x.provice }}</span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Zip Code:</span>
+            <span class="info-value">{{ x.zipcode }}</span>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

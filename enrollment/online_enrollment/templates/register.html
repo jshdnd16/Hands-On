@@ -1,0 +1,160 @@
+<style>
+    a {
+        text-decoration: none;
+    }
+
+    /* Make page center properly */
+    body, html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f7fc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* MAIN CONTAINER */
+    .auth-container {
+        width: 100%;
+        max-width: 480px;
+        background: #fff;
+        padding: 40px 35px;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(44,62,80,0.10);
+        box-sizing: border-box;
+
+        /* Zoom effect to make it look larger */
+        transform: scale(1.08);
+    }
+
+    /* Title */
+    .auth-title {
+        font-size: 28px;
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: bold;
+        color: #2c3e50;
+    }
+
+    /* Form */
+    .auth-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Fields */
+    .form-fields p {
+        margin-bottom: 14px;
+    }
+
+    .form-fields label {
+        font-weight: bold;
+        margin-bottom: 6px;
+        display: block;
+        color: #2c3e50;
+    }
+
+    .form-fields input,
+    .form-fields select,
+    .form-fields textarea {
+        width: 100%;
+        padding: 14px 16px;
+        border-radius: 6px;
+        border: 1px solid #bdc3c7;
+        font-size: 16px;
+        background: #fbfdff;
+        transition: 0.2s;
+        box-sizing: border-box;
+    }
+
+    .form-fields input:focus,
+    .form-fields select:focus,
+    .form-fields textarea:focus {
+        border-color: #3498db;
+        background: #fff;
+        box-shadow: 0 4px 12px rgba(52,152,219,0.06);
+        outline: none;
+    }
+
+    /* Button */
+    .btn-auth {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 15px 0;
+        border-radius: 6px;
+        font-size: 17px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.08s;
+    }
+
+    .btn-auth:hover {
+        background-color: #2980b9;
+        transform: translateY(-1px);
+    }
+
+    /* Bottom text */
+    .auth-text {
+        text-align: center;
+        color: #7f8c8d;
+        font-size: 15px;
+    }
+
+    .auth-link {
+        color: #3498db;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    /* MOBILE BOOST */
+    @media (max-width: 600px) {
+
+        body {
+            padding: 20px;
+        }
+
+        .auth-container {
+            max-width: 100%;
+            padding: 50px 30px;
+
+            /* Stronger zoom for small screens */
+            transform: scale(1.25);
+        }
+
+        .auth-title {
+            font-size: 30px;
+        }
+
+        .form-fields input {
+            font-size: 17px;
+        }
+
+        .btn-auth {
+            font-size: 18px;
+            padding: 16px 0;
+        }
+    }
+</style>
+
+<div class="auth-container">
+    <form method="POST" class="auth-form">
+        {% csrf_token %}
+
+        <h2 class="auth-title">Register Account</h2>
+
+        <div class="form-fields">
+            {{ form.as_p }}
+        </div>
+
+        <button type="submit" class="btn-auth">Register</button>
+
+        <p class="auth-text">
+            Already have an account? 
+            <a href="{% url 'login_user' %}" class="auth-link">Login</a>
+        </p>
+    </form>
+</div>
